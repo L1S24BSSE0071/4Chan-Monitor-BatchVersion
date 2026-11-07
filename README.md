@@ -152,12 +152,11 @@ Close the terminal window, or press `Ctrl+C`. Stats are saved at the end of each
 ### Multi-thread queue management
 Monitors any number of threads from a single list. The script processes every URL in the list each cycle.
 
-### Auto dead-thread removal
-Threads that have 404'd, expired, or been archived are automatically detected and removed from the thread list at the end of each cycle. Detection is two-layered:
-- If gallery-dl exits non-zero: log is checked for `404 Client`, `Not Found`, `Unsupported URL`
-- If gallery-dl exits zero but log contains `Not Found`, `has expired`, or `is archived`: thread is still treated as dead
-
-This handles all gallery-dl versions and edge cases where a dead thread returns exit code 0.
+### Auto dead-thread removal & Archive Support
+Threads that have 404'd, expired, or been archived are automatically handled:
+- **Native 4chan Archive Detection**: When a live 4chan thread enters 4chan's built-in archive (`"archived": 1`), the script completes one final download pass and removes it from the active monitoring queue at the end of the cycle (since archived threads are locked and cannot receive new replies).
+- **Automatic 3rd-Party Archive Fallback on 404**: When a 4chan thread returns `404 Not Found`, the script automatically checks board-specific 4chan archives (`desuarchive.org`, `arch.b4k.co`, `archive.4plebs.org`, `warosu.org`, `thebarchive.com`, `archiveofsins.com`, `palanq.win`, and `archived.moe`) to recover any remaining media before removing the dead thread from the queue.
+- **Direct Archive URLs**: You can also paste archive URLs directly into `threads_4chan.txt` or `new_4chan.txt`; they will be downloaded once and automatically cleaned up after the cycle.
 
 ### Inbox / priority queue
 Two additional input mechanisms beyond the main list:
