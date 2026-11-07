@@ -23,7 +23,7 @@
 
 ## Overview
 
-`4chan_monitor.bat` is a Windows batch script that continuously monitors a list of 4chan thread URLs, downloads any new files using gallery-dl, and automatically cleans up dead threads. It runs in a terminal window with no installation — just drop the script in a folder, add some thread URLs, and run it.
+`4chan-threads-monitor.bat` is a Windows batch script that continuously monitors a list of 4chan thread URLs, downloads any new files using gallery-dl, and automatically cleans up dead threads. It runs in a terminal window with no installation — just drop the script in a folder, add some thread URLs, and run it.
 
 It is designed to run unattended for hours or days. Threads that 404 or expire are detected and removed automatically. New threads can be added at any time without restarting the script. Stats are saved across sessions so nothing is lost if you close the window.
 
@@ -50,7 +50,7 @@ No other runtime, framework, or dependency is required. The script uses only too
 
 ## Installation
 
-1. Download `4chan_monitor.bat`
+1. Download `4chan-threads-monitor.bat`
 2. Place it in an empty folder — this folder will be used as the working directory
 3. That's it
 
@@ -67,9 +67,9 @@ https://boards.4chan.org/wg/thread/87654321
 https://boards.4chan.org/an/thread/11223344
 ```
 
-**Step 2** — Double-click `4chan_monitor.bat` or run it from a terminal:
+**Step 2** — Double-click `4chan-threads-monitor.bat` or run it from a terminal:
 ```
-4chan_monitor.bat
+4chan-threads-monitor.bat
 ```
 
 **Step 3** — When prompted, enter the number of monitor cycles to run, or `0` for infinite:
@@ -122,18 +122,18 @@ All files are created automatically in the same folder as the script.
 
 ### Running normally
 ```
-4chan_monitor.bat
+4chan-threads-monitor.bat
 ```
 
 ### Dry-run mode
 Preview what would run without downloading anything. gallery-dl is never called.
 ```
-4chan_monitor.bat --dry-run
+4chan-threads-monitor.bat --dry-run
 ```
 
 ### Help
 ```
-4chan_monitor.bat --help
+4chan-threads-monitor.bat --help
 ```
 
 ### Adding threads while running
